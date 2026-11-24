@@ -64,39 +64,3 @@ footer{text-align:center;padding:30px;color:#666;font-size:13px;border-top:1px s
 <div id="ai-win">
 <div id="ai-head"><div><b>OV Assistante IA</b><br><span>● En ligne - Répond instantanément</span></div><span style="cursor:pointer" onclick="toggleAI()">✕</span></div>
 <div id="ai-msgs">
-<div class="msg ai">Salut! Je suis l'assistante IA d'OV WORLDWIDE 👑<br><br>Je connais tous nos produits, prix et livraison! Comment je peux t'aider?</div>
-</div>
-<div class="quick">
-<button onclick="ask('jeans')">Voir les jeans</button>
-<button onclick="ask('maillot')">Prix maillots?</button>
-<button onclick="ask('livraison')">Livraison?</button>
-<button onclick="ask('jort')">Jort 13k</button>
-</div>
-<div id="ai-input"><input id="ai-in" placeholder="Pose ta question..." onkeypress="if(event.key==='Enter')send()"><button onclick="send()">→</button></div>
-</div>
-
-<script>
-let open=false
-function toggleAI(){open=!open;document.getElementById('ai-win').classList.toggle('open',open)}
-setTimeout(()=>{if(!open)toggleAI()},2000)
-function ask(q){document.getElementById('ai-in').value=q;send()}
-function send(){
- let i=document.getElementById('ai-in'),t=i.value.trim().toLowerCase();if(!t)return
- let msgs=document.getElementById('ai-msgs')
- msgs.innerHTML+=`<div class="msg user">${i.value}</div>`
- i.value=''
- let r=''
- if(t.includes('jean'))r='On a 2 Jeans Baggy à 18.000 FCFA chacun! 👖 Bleu et Large Sombre. Tailles M L XL dispo. Tu veux commander? <a href="https://wa.me/237698735318?text=Jeans%20OV" style="color:#D4AF37">→ WhatsApp</a>'
- else if(t.includes('jort')||t.includes('short'))r='Le Jort Cross Strass Rhinestone est à 13.000 FCFA 🩳 Strass brillant, qualité premium! Taille M L XL. <a href="https://wa.me/237698735318?text=Jort%2013k">Commander sur WhatsApp</a>'
- else if(t.includes('maillot'))r='Maillots à 9.000 FCFA seulement! 🔥 Maillot Brésil et Maillot Barça Beige. Taille M L XL. Les deux à 9k!'
- else if(t.includes('livraison'))r='Livraison: 24-48h Yaoundé (1000-1500f), 3-5 jours autres villes (2500-3500f). Paiement à la livraison possible! 📦'
- else if(t.includes('taille'))r='Tailles dispo: M, L, XL pour tous les produits. Coupe oversize / baggy tendance 2026!'
- else if(t.includes('prix')||t.includes('combien'))r='Prix: Jeans 18k, Jort 13k, Maillots 9k, T-Shirts 10-13k, Veste 20k, Pull 18k, Chemise 17k. Tout en FCFA!'
- else if(t.includes('commander')||t.includes('acheter'))r='Pour commander: clique sur "Commander" sur le produit ou écris-nous direct sur WhatsApp 698735318! On te répond en 5 min! 💬 <a href="https://wa.me/237698735318">→ WhatsApp</a>'
- else r='Je peux t\'aider avec: les jeans, jort à 13k, maillots à 9k, livraison, tailles, ou commande WhatsApp! Pose ta question 😊'
- setTimeout(()=>{msgs.innerHTML+=`<div class="msg ai">${r}</div>`;msgs.scrollTop=msgs.scrollHeight},400)
- msgs.scrollTop=msgs.scrollHeight
-}
-</script>
-</body>
-</html>
